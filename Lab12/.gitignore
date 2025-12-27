@@ -13,3 +13,8 @@
 
 # Terraform lock file
 .terraform.lock.hcl
+aws/
+awscliv2.zip
+terraform_*.zip
+
+

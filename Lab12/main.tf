@@ -33,6 +33,32 @@ module "myapp-webserver" {
   script_path      = "./entry-script.sh"
   instance_suffix  = "0"
 }
+module "myapp-web-1" {
+  source            = "./modules/webserver"
+  env_prefix        = var.env_prefix
+  instance_type     = var.instance_type
+  availability_zone = var.availability_zone
+  public_key        = var.public_key
+  my_ip             = local.my_ip
+  vpc_id            = aws_vpc.myapp_vpc.id
+  subnet_id         = module.myapp-subnet.subnet.id
+  script_path       = "./apache.sh"
+  instance_suffix   = "1"
+
+}
+module "myapp-web-2" {
+  source = "./modules/webserver"
+  env_prefix = var.env_prefix
+  instance_type = var.instance_type
+  availability_zone = var.availability_zone
+  public_key = var.public_key
+  my_ip = local.my_ip
+  vpc_id = aws_vpc.myapp_vpc.id
+  subnet_id = module.myapp-subnet.subnet.id
+  script_path = "./apache.sh"
+  instance_suffix = "2"
+}
+
 
 data "http" "my_ip" {
   url = "https://icanhazip.com"
