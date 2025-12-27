@@ -18,3 +18,9 @@ awscliv2.zip
 terraform_*.zip
 
 
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.pem
+.terraform.lock.hcl
